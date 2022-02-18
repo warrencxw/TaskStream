@@ -58,7 +58,8 @@ public class DataManager {
             ArrayList<String> dataItems = readFile();
             taskList = parse(dataItems);
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // bad practice, should manage somehow
+            // Try to catch the exception as close to where the exception happens as possible
         }
         return taskList;
     }
@@ -66,7 +67,7 @@ public class DataManager {
     private ArrayList<Task> parse(ArrayList<String> dataItems) {
         ArrayList<Task> allTasks = new ArrayList<>();
         for (String line : dataItems) {
-            String taskType = getTaskType(line);
+            String taskType = getTaskType(line); // SLAP
             String taskDescription = getTaskDescription(line);
             switch (taskType) {
             case "T":
